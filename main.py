@@ -18,7 +18,8 @@ import webapp2
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world !!')
+        lucky_number = 4
+        self.response.write('Your lucky number is :'+str(lucky_number))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
