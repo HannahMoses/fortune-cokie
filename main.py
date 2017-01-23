@@ -18,8 +18,10 @@ import webapp2
 import random
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+        header = '<h1> Fortune Cookie </h1>'
         lucky_number = random.randint(1,100)
-        self.response.write('Your lucky number is :'+str(lucky_number))
+        number_sentence = 'Your lucky number is :'+str(lucky_number)
+        self.response.write(header + number_sentence)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
