@@ -13,7 +13,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+#So,
+#1)RequestHandler
+#2) WSGIApplication
+#are some of the classes defined in the library named webapp2.They help our web  application
+
 import webapp2
 import random
 class MainHandler(webapp2.RequestHandler):
@@ -24,8 +28,12 @@ class MainHandler(webapp2.RequestHandler):
         number_paragraph = "<p>" + number_sentence + "</p>"
         self.response.write(header + number_paragraph)
         # I am writing a HTTP response to be sent to the user who sent the request to view my fortune cookie web page
+class LoginHandler(webapp2.RequestHandler) :
+    def get(self) :
+        self.response.write('Thanks for trying to login !')
 
-app = webapp2.WSGIApplication([
+routes = [
     ('/', MainHandler),
-    ('/login',MainHandler)
-], debug=True)
+    ('/login', LoginHandler)
+    ]
+app = webapp2.WSGIApplication( routes,debug=True)
