@@ -21,8 +21,11 @@ class MainHandler(webapp2.RequestHandler):
         header = '<h1> Fortune Cookie </h1>'
         lucky_number = random.randint(1,100)
         number_sentence = 'Your lucky number is :'+str(lucky_number)
-        self.response.write(header + number_sentence)
+        number_paragraph = "<p>" + number_sentence + "</p>"
+        self.response.write(header + number_paragraph)
+        # I am writing a HTTP response to be sent to the user who sent the request to view my fortune cookie web page
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/login',MainHandler)
 ], debug=True)
