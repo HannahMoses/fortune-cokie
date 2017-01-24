@@ -1,3 +1,4 @@
+#Working code shown to TF Kevin
 #!/usr/bin/env python
 #
 # Copyright 2007 Google Inc.
@@ -20,14 +21,33 @@
 
 import webapp2
 import random
+
+def getRandomFortune():
+    fortunes = [
+    "You will be like the righteous, who fight like a lion! Rrrr..oar !",
+    "Your goal:Commit your plans to the Lord,and He will make you succeed !Grrr..eat !",
+    "You will inherit $23,412 next week !Just peachy !",
+    "You will go on a trip soon !",
+    "You will get a pleasant surprise in the mail !"
+    ]
+    index = random.randint(0,4)
+    return fortunes[index]
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         header = '<h1> Fortune Cookie </h1>'
+
+        fortune = getRandomFortune()
+        fortune_sentence = "Your fortune : " + fortune
+        fortune_paragraph = "<p>" + fortune_sentence + " /p>"
+
         lucky_number = random.randint(1,100)
         number_sentence = 'Your lucky number is :'+str(lucky_number)
         number_paragraph = "<p>" + number_sentence + "</p>"
-        self.response.write(header + number_paragraph)
+        content = header + number_paragraph+ fortune_paragraph
+        self.response.write(content)
         # I am writing a HTTP response to be sent to the user who sent the request to view my fortune cookie web page
+'''
 class LoginHandler(webapp2.RequestHandler) :
     def get(self) :
         self.response.write('Thanks for trying to login !')
@@ -36,4 +56,7 @@ routes = [
     ('/', MainHandler),
     ('/login', LoginHandler)
     ]
-app = webapp2.WSGIApplication( routes,debug=True)
+'''
+app = webapp2.WSGIApplication( [
+    ('/', MainHandler)
+    ],debug=True)
