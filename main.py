@@ -37,14 +37,16 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         header = '<h1> Fortune Cookie </h1>'
 
-        fortune = getRandomFortune()
+        fortune = "<strong>"+ getRandomFortune() + "</strong"
         fortune_sentence = "Your fortune : " + fortune
-        fortune_paragraph = "<p>" + fortune_sentence + " /p>"
+        fortune_paragraph = "<p>" + fortune_sentence + "</p>"
 
-        lucky_number = random.randint(1,100)
-        number_sentence = 'Your lucky number is :'+str(lucky_number)
+        lucky_number = "<strong>"+str(random.randint(1,100))+ "</strong>"
+        number_sentence = 'Your lucky number is :'+lucky_number
         number_paragraph = "<p>" + number_sentence + "</p>"
-        content = header + number_paragraph+ fortune_paragraph
+        cookie_again_button = "<a href='.'><button>Another cookie please !</button></a>"
+
+        content = header + number_paragraph+ fortune_paragraph+" <br><br>" +cookie_again_button
         self.response.write(content)
         # I am writing a HTTP response to be sent to the user who sent the request to view my fortune cookie web page
 '''
