@@ -27,7 +27,7 @@ def getRandomFortune():
     "You will be like the righteous, who fight like a lion! Rrrr..oar !",
     "Your goal:Commit your plans to the Lord,and He will make you succeed !Grrr..eat !",
     "You will inherit $23,412 next week !Just peachy !",
-    "You will go on a trip soon !",
+    "You will go on a trip very  soon !",
     "You will get a pleasant surprise in the mail !"
     ]
     index = random.randint(0,4)
